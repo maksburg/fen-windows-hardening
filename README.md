@@ -215,6 +215,26 @@ Important:
 This does **not** mean that fen runs with SYSTEM or Administrator privileges.  
 fen always runs with the privileges of the user who starts it.
 
+#### Interpreting `icacls` output (ACL notation)
+
+`icacls` uses short flags to describe inheritance and permission levels. You will encounter these during the verification steps:
+
+- `OI` = **Object Inherit** (applies to files inside the folder)
+- `CI` = **Container Inherit** (applies to subfolders inside the folder)
+- `RX` = **Read & Execute** (read files and run executables)
+- `F`  = **Full Control** (read, write, modify, delete, and take ownership)
+
+Example:
+
+```text
+BUILTIN\Users:(OI)(CI)(RX)
+```
+
+Meaning: **Users can read and execute**, and the permission **inherits to all files and subfolders**.
+
+This is intentional: it allows running `fen` while preventing non-admin users from modifying binaries in `Program Files`.
+
+
 ---
 
 ### Negative test: users must NOT be able to write to Program Files
