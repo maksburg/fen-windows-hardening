@@ -323,3 +323,26 @@ It is about:
 - proving that protections actually work
 
 If a command **fails in the expected way**, security is working.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
+See the LICENSE file for details.
+
+---
+
+## Upstream project notice
+
+This repository does **not** contain or replace *fen* itself.
+
+- *fen* is developed and maintained by its original author(s)
+- This project provides **Windows hardening, installation, and verification**
+  workflows **around** fen
+- All fen binaries are downloaded directly from the official upstream releases
+
+For the fen project itself, see the upstream repository:
+https://github.com/kivattt/fen
+
+
