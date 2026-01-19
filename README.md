@@ -7,6 +7,46 @@ It is a **hands-on security exercise** designed to teach how professional harden
 
 ---
 
+## Safe Learning by Design (Hardened Environment)
+
+This project is intentionally used in a hardened Windows environment with restricted user permissions.
+
+When learning and using `fen` as a regular (non-administrative) user, it may **not be possible to**:
+- create new directories
+- delete files or folders
+- modify protected locations
+
+This is **expected and intentional behavior**, not a limitation of `fen`.
+
+### Why this is beneficial when learning fen
+
+Learning a fast, keyboard-driven file manager carries a real risk of mistakes early on
+(e.g. wrong selection, wrong directory, accidental delete).
+
+By enforcing restricted permissions during the learning phase:
+
+- accidental deletion is impossible
+- project files cannot be damaged by mistake
+- users can safely practice navigation, selection, and search
+- correct muscle memory is built before write access is introduced
+
+This follows established security best practices such as:
+- least privilege
+- read-only analysis environments
+- staging before production changes
+
+### When write access is needed
+
+File creation, deletion, or modification should be done:
+- as an Administrator
+- via approved scripts
+- or inside explicitly permitted training/work directories  
+  (for example: `fen-training/`)
+
+By the time write access is granted, the user already understands `fen` well enough to work safely and precisely.
+
+---
+
 ## Start here (important for beginners)
 
 This repository is a **learning lab**, not an automated setup tool.
