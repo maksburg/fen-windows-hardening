@@ -23,29 +23,38 @@
   PS> .\scripts\04-config-nc.ps1
 #>
 
+$ErrorActionPreference = "Stop"
+Set-StrictMode -Version Latest
+
 $cfgDir  = Join-Path $env:APPDATA "fen"
 $cfgFile = Join-Path $cfgDir "config.lua"
 
 New-Item -ItemType Directory -Force $cfgDir | Out-Null
 
-@"
-ui = {
-  dual_pane = true,
-  borders = true,
-  status_bar = true,
-  show_hidden = false,
-  sort = "name",
-}
+$config = @'
+return {
+  ui = {
+    dual_pane  = true,
+    borders    = true,
+    status_bar = true,
+    show_hidden = false,
+    sort = "name",
+  },
 
-colors = {
-  theme = "classic",
-}
+  colors = {
+    theme = "classic",
+  },
 
-keys = {
-  quit = "q",
-  refresh = "r",
+  keys = {
+    quit    = "q",
+    refresh = "r",
+  }
 }
-"@ | Set-Content -Encoding UTF8 $cfgFile
+'@
+
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText($cfgFile, $config, $utf8NoBom)
 
 Write-Host "Created safe NC-style config:"
 Write-Host "  $cfgFile"
